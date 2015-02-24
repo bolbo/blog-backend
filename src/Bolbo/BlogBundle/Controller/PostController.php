@@ -16,6 +16,7 @@ use FOS\RestBundle\View\RouteRedirectView;
 use FOS\RestBundle\View\View;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -51,7 +52,7 @@ class PostController extends FOSRestController
      *
      * @Annotations\View()
      *
-     * @param Request               $request      the request object
+     * @param Request $request the request object
      * @param ParamFetcherInterface $paramFetcher param fetcher service
      *
      * @return array
@@ -64,7 +65,8 @@ class PostController extends FOSRestController
 
         $notes = $this->getPostManager()->fetch($start, $limit);
 
-        return new PostCollection($notes, $offset, $limit);
+        return new JsonResponse(['test']);
+        //return new PostCollection($notes, $offset, $limit);
     }
 
 }
