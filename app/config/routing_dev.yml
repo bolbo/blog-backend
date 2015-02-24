@@ -2,7 +2,7 @@ _welcome:
     pattern:  /
     defaults:
         _controller: FrameworkBundle:Redirect:redirect
-        route: get_notes
+        route: get_posts
         permanent: true # this for 301
 
 _wdt:

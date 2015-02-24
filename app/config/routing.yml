@@ -1,7 +1,7 @@
-bolbo_blog:
-    resource: "@BolboBlogBundle/Resources/config/routing.yml"
-    prefix:   /
-
 NelmioApiDocBundle:
   resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
   prefix:   /api/doc
+
+blog_post:
+    resource: "@BolboBlogBundle/Controller/PostController.php"
+    type:     rest
