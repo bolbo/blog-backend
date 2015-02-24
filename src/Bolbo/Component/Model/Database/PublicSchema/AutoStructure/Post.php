@@ -5,7 +5,7 @@
  * generation.
  */
 
-namespace \Bolbo\Component\Model\Database\PublicSchema\AutoStructure;
+namespace Bolbo\Component\Model\Database\PublicSchema\AutoStructure;
 
 use PommProject\ModelManager\Model\RowStructure;
 

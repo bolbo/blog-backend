@@ -1,6 +1,6 @@
 <?php
 
-namespace \Bolbo\Component\Model\Database\PublicSchema;
+namespace Bolbo\Component\Model\Database\PublicSchema;
 
 use PommProject\ModelManager\Model\FlexibleEntity;
 
