@@ -95,5 +95,6 @@ pomm:
     configuration:
         database:
             dsn: 'pgsql://%db_user1%:%db_password1%@%db_host1%:%db_port1%/%db_name1%'
+            class:session_builder: '\PommProject\ModelManager\SessionBuilder'
     logger:
         service: '@logger'

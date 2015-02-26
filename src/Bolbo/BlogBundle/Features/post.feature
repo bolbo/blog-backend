@@ -5,6 +5,6 @@ Feature: GitHub RestFul Api Testing with Behat
   So that it will bring smile for behat community
 
   Scenario: GitHub behat Demo Api
-    Given I request "/app_dev.php/posts"
+    Given I request "/app_dev.php/posts.json"
     Then the response should be JSON
     And the response status code should be 200

@@ -5,5 +5,5 @@ services:
     bolbo.blog.post_manager:
         class: Bolbo\BlogBundle\Manager\PostManager
         arguments:
-            - @security.secure_random
-            - %kernel.cache_dir%
+            - @pomm
+            - \Bolbo\Component\Model\Database\PublicSchema\PostModel

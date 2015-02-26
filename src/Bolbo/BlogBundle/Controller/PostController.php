@@ -63,10 +63,45 @@ class PostController extends FOSRestController
         $start = null == $offset ? 0 : $offset + 1;
         $limit = $paramFetcher->get('limit');
 
-        $notes = $this->getPostManager()->fetch($start, $limit);
+        $posts = $this->getPostManager()->fetch($start, $limit);
 
-        return new JsonResponse(['test']);
-        //return new PostCollection($notes, $offset, $limit);
+        return new PostCollection($posts, $offset, $limit);
     }
 
+
+    /**
+     * Get a single post.
+     *
+     * @ApiDoc(
+     *   output = "Bolbo\BlobBundle\Model\Post",
+     *   statusCodes = {
+     *     200 = "Returned when successful",
+     *     404 = "Returned when the note is not found"
+     *   }
+     * )
+     *
+     * @Annotations\View(templateVar="post")
+     *
+     * @param Request $request the request object
+     * @param int $id the post id
+     *
+     * @return array
+     *
+     * @throws NotFoundHttpException when post not exist
+     */
+    public function getPostAction(Request $request, $id)
+    {
+        $post = $this->getPostManager()->get($id);
+        if (false === $post) {
+            throw $this->createNotFoundException("Post does not exist.");
+        }
+
+        $view = new View($post);
+        $group = $this->container->get('security.authorization_checker')->isGranted('ROLE_API')
+            ? 'restapi'
+            : 'standard';
+        $view->getSerializationContext()->setGroups(array('Default', $group));
+
+        return $view;
+    }
 }

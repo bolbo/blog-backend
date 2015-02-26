@@ -5,21 +5,22 @@
 {% block content_header '' %}
 
 {% block content %}
-    <h1 class="title">{{ 'note.list.headline'|trans({}, 'AcmeDemoBundle') }}</h1>
+    <h1 class="title">{{ 'post.list.headline'|trans({}, 'AcmeDemoBundle') }}</h1>
 
 
-    <ul id="note-list">
-        {% for id, note in data.notes %}
+    <ul id="post-list">
+        {% for id, post in data.posts %}
             <li>
-                <a href="{{ path('get_note', {'id': id}) }}">{{ note }}</a>
-                [<a href="{{ path('edit_notes', {'id': id}) }}">{{ 'note.edit.link'|trans({}, 'AcmeDemoBundle') }}</a>]
-                [<a href="{{ path('remove_notes', {'id': id}) }}">{{ 'note.remove.link'|trans({}, 'AcmeDemoBundle') }}</a>]
+                <a href="{{ path('get_post', {'id': post.id}) }}">{{ post }}</a>
+                {#
+                 [<a href="{{ path('edit_posts', {'id': id}) }}">{{ 'post.edit.link'|trans({}, 'BolboBlobBundle') }}</a>]
+                 [<a href="{{ path('remove_posts', {'id': id}) }}">{{ 'post.remove.link'|trans({}, 'BolboBlobBundle') }}</a>]
+                 #}
             </li>
         {% else %}
-            <li>{{ 'note.list.empty'|trans({}, 'AcmeDemoBundle') }}</li>
+            <li>{{ 'post.list.empty'|trans({}, 'BolboBlobBundle') }}</li>
         {% endfor %}
     </ul>
     <p>
-        <a href="{{ path('new_note') }}">{{ 'note.new.link'|trans({}, 'AcmeDemoBundle') }}</a>
     </p>
 {% endblock %}

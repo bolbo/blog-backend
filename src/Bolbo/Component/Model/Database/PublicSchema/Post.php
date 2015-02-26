@@ -14,4 +14,11 @@ use PommProject\ModelManager\Model\FlexibleEntity;
  */
 class Post extends FlexibleEntity
 {
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return json_encode(['id' => $this->getId(), 'title' => $this->getTitle()]);
+    }
 }
