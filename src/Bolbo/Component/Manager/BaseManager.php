@@ -90,4 +90,14 @@ abstract class BaseManager
         return $this->getPommModel()
                     ->findByPk(['id' => $id]);
     }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function delete($id)
+    {
+        return $this->getPommModel()
+                    ->deleteByPK(['id' => $id]);
+    }
 }

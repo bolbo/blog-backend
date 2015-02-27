@@ -1,0 +1,17 @@
+{% extends "BolboBlogBundle::layout.html.twig" %}
+
+{% block title "Symfony - Posts" %}
+
+{% block content_header '' %}
+
+{% block content %}
+    <h1 class="title">{{ 'post.edit.headline'|trans({'%id%': id}, 'BolboBlogBundle') }}</h1>
+
+    <form action="{{ url('put_posts', {'id': id}) }}" method="POST" {{ form_enctype(form) }}>
+        <input type="hidden" name="_method" value="put"/>
+
+        {{ form_widget(form) }}
+
+        <input type="submit" value="{% trans from 'BolboBlogBundle' %}post.edit.submit{% endtrans %}">
+    </form>
+{% endblock %}

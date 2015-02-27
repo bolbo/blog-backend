@@ -3,7 +3,7 @@
 namespace Bolbo\BlogBundle\Controller;
 
 use Bolbo\BlogBundle\Form\PostType;
-use Bolbo\BlogBundle\Model\Post;
+use Bolbo\Component\Model\Database\PublicSchema\Post;
 use Bolbo\BlogBundle\Model\PostCollection;
 
 use FOS\RestBundle\Util\Codes;
@@ -22,7 +22,7 @@ use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Rest controller for notes
+ * Rest controller for posts
  *
  * @package Bolbo\BlogBundle\Controller
  * @author Bolbo
@@ -47,8 +47,8 @@ class PostController extends FOSRestController
      *   }
      * )
      *
-     * @Annotations\QueryParam(name="offset", requirements="\d+", nullable=true, description="Offset from which to start listing notes.")
-     * @Annotations\QueryParam(name="limit", requirements="\d+", default="5", description="How many notes to return.")
+     * @Annotations\QueryParam(name="offset", requirements="\d+", nullable=true, description="Offset from which to start listing posts.")
+     * @Annotations\QueryParam(name="limit", requirements="\d+", default="5", description="How many posts to return.")
      *
      * @Annotations\View()
      *
@@ -76,7 +76,7 @@ class PostController extends FOSRestController
      *   output = "Bolbo\BlobBundle\Model\Post",
      *   statusCodes = {
      *     200 = "Returned when successful",
-     *     404 = "Returned when the note is not found"
+     *     404 = "Returned when the post is not found"
      *   }
      * )
      *
@@ -103,5 +103,186 @@ class PostController extends FOSRestController
         $view->getSerializationContext()->setGroups(array('Default', $group));
 
         return $view;
+    }
+
+    /**
+     * Presents the form to use to create a new post.
+     *
+     * @ApiDoc(
+     *   resource = true,
+     *   statusCodes = {
+     *     200 = "Returned when successful"
+     *   }
+     * )
+     *
+     * @Annotations\View()
+     *
+     * @return FormTypeInterface
+     */
+    public function newPostAction()
+    {
+        return $this->createForm(new PostType());
+    }
+
+    /**
+     * Creates a new post from the submitted data.
+     *
+     * @ApiDoc(
+     *   resource = true,
+     *   input = "Bolbo\BlogBundle\Form\PostType",
+     *   statusCodes = {
+     *     200 = "Returned when successful",
+     *     400 = "Returned when the form has errors"
+     *   }
+     * )
+     *
+     * @Annotations\View(
+     *   template = "AcmeDemoBundle:Post:newPost.html.twig",
+     *   statusCode = Codes::HTTP_BAD_REQUEST
+     * )
+     *
+     * @param Request $request the request object
+     *
+     * @return FormTypeInterface|RouteRedirectView
+     */
+    public function postPostsAction(Request $request)
+    {
+        $post = new Post();
+        $form = $this->createForm(new PostType(), $post);
+
+        $form->submit($request);
+        if ($form->isValid()) {
+            $this->getPostManager()->set($post);
+
+            return $this->routeRedirectView('get_post', array('id' => $post->id));
+        }
+
+        return array(
+            'form' => $form
+        );
+    }
+
+    /**
+     * Presents the form to use to update an existing post.
+     *
+     * @ApiDoc(
+     *   resource = true,
+     *   statusCodes={
+     *     200 = "Returned when successful",
+     *     404 = "Returned when the post is not found"
+     *   }
+     * )
+     *
+     * @Annotations\View()
+     *
+     * @param Request $request the request object
+     * @param int $id the post id
+     *
+     * @return FormTypeInterface
+     *
+     * @throws NotFoundHttpException when post not exist
+     */
+    public function editPostsAction(Request $request, $id)
+    {
+        $post = $this->getPostManager()->get($id);
+        if (false === $post) {
+            throw $this->createNotFoundException("Post does not exist.");
+        }
+
+        $form = $this->createForm(new PostType(), $post);
+
+        return $form;
+    }
+
+    /**
+     * Update existing post from the submitted data or create a new post at a specific location.
+     *
+     * @ApiDoc(
+     *   resource = true,
+     *   input = "Bolbo\BlogBundle\Form\PostType",
+     *   statusCodes = {
+     *     201 = "Returned when a new resource is created",
+     *     204 = "Returned when successful",
+     *     400 = "Returned when the form has errors"
+     *   }
+     * )
+     *
+     * @Annotations\View(
+     *   template="AcmeDemoBundle:Post:editPost.html.twig",
+     *   templateVar="form"
+     * )
+     *
+     * @param Request $request the request object
+     * @param int $id the post id
+     *
+     * @return FormTypeInterface|RouteRedirectView
+     *
+     * @throws NotFoundHttpException when post not exist
+     */
+    public function putPostsAction(Request $request, $id)
+    {
+        $post = $this->getPostManager()->get($id);
+        if (false === $post) {
+            $post = new Post();
+            $post->id = $id;
+            $statusCode = Codes::HTTP_CREATED;
+        } else {
+            $statusCode = Codes::HTTP_NO_CONTENT;
+        }
+
+        $form = $this->createForm(new PostType(), $post);
+
+        $form->submit($request);
+        if ($form->isValid()) {
+            $this->getPostManager()->set($post);
+
+            return $this->routeRedirectView('get_post', array('id' => $post->id), $statusCode);
+        }
+
+        return $form;
+    }
+
+    /**
+     * Removes a post.
+     *
+     * @ApiDoc(
+     *   resource = true,
+     *   statusCodes={
+     *     204="Returned when successful"
+     *   }
+     * )
+     *
+     * @param Request $request the request object
+     * @param int $id the post id
+     *
+     * @return RouteRedirectView
+     */
+    public function deletePostsAction(Request $request, $id)
+    {
+        $this->getPostManager()->delete($id);
+
+        // There is a debate if this should be a 404 or a 204
+        // see http://leedavis81.github.io/is-a-http-delete-requests-idempotent/
+        return $this->routeRedirectView('get_posts', array(), Codes::HTTP_NO_CONTENT);
+    }
+
+    /**
+     * Removes a post.
+     *
+     * @ApiDoc(
+     *   resource = true,
+     *   statusCodes={
+     *     204="Returned when successful"
+     *   }
+     * )
+     *
+     * @param Request $request the request object
+     * @param int $id the post id
+     *
+     * @return RouteRedirectView
+     */
+    public function removePostsAction(Request $request, $id)
+    {
+        return $this->deletePostsAction($request, $id);
     }
 }
