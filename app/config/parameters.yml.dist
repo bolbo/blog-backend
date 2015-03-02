@@ -13,3 +13,5 @@ parameters:
 
     locale: fr
     secret: secret
+
+    database_connexion:

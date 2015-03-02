@@ -6,4 +6,5 @@ services:
         class: Bolbo\BlogBundle\Manager\PostManager
         arguments:
             - @pomm
+            - %database_connexion%
             - \Bolbo\Component\Model\Database\PublicSchema\PostModel

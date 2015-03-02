@@ -6,21 +6,25 @@ use PommProject\Foundation\Pomm;
 
 /**
  * Class BaseManager
+ *
  * @package Bolbo\Component\Manager
  */
 abstract class BaseManager
 {
+
     /**
      * @var Pomm
      */
     protected $pomm;
+
     /**
      * @var string
      */
     protected $modelClass;
 
+
     /**
-     * @param Pomm $pomm
+     * @param Pomm   $pomm
      * @param string $modelClass
      */
     public function __construct(Pomm $pomm, $modelClass)
@@ -38,6 +42,7 @@ abstract class BaseManager
         return $this->pomm;
     }
 
+
     /**
      * @param Pomm $pomm
      */
@@ -45,6 +50,7 @@ abstract class BaseManager
     {
         $this->pomm = $pomm;
     }
+
 
     /**
      * @return string
@@ -54,6 +60,7 @@ abstract class BaseManager
         return $this->modelClass;
     }
 
+
     /**
      * @param string $modelClass
      */
@@ -62,9 +69,11 @@ abstract class BaseManager
         $this->modelClass = $modelClass;
     }
 
+
     /**
      * @param $start
      * @param $limit
+     *
      * @return mixed
      */
     public function fetch($start, $limit)
@@ -73,8 +82,10 @@ abstract class BaseManager
                     ->findAll();
     }
 
+
     /**
      * @param $id
+     *
      * @return mixed
      */
     public function get($id)
@@ -83,8 +94,10 @@ abstract class BaseManager
                     ->findByPk(['id' => $id]);
     }
 
+
     /**
      * @param $id
+     *
      * @return mixed
      */
     public function delete($id)

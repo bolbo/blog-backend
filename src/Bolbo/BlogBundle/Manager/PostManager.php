@@ -13,22 +13,31 @@ use Bolbo\Component\Manager\BaseManager;
  */
 class PostManager extends BaseManager
 {
+
     /**
+     * @var string
      */
-    public function __construct($pomm, $modelClass)
+    var $databaseConnexion;
+
+
+    /**
+     * @param \PommProject\Foundation\Pomm $pomm
+     * @param string                       $databaseConnexion
+     * @param string                       $modelClass
+     */
+    public function __construct($pomm, $databaseConnexion, $modelClass)
     {
+        $this->databaseConnexion = $databaseConnexion;
         parent::__construct($pomm, $modelClass);
     }
 
 
     /**
-     * @ return \PommProject\ModelManager\Model\Model
-     *
      * @return \Bolbo\Component\Model\Database\PublicSchema\PostModel
      */
     public function getPommModel()
     {
-        return $this->pomm['database']->getModel($this->modelClass);
+        return $this->pomm[$this->databaseConnexion]->getModel($this->modelClass);
     }
 
 
