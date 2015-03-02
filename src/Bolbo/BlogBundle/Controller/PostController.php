@@ -152,11 +152,20 @@ class PostController extends FOSRestController
      */
     public function postPostsAction(Request $request)
     {
-        $post = new Post([]);
+        $post = new Post(['id'          => null,
+                          'title'       => null,
+                          'content'     => null,
+                          'category_id' => 1,
+                          'slug'        => 'test',
+                          'author_id'   => 1]);
+
         $form = $this->createForm(new PostType(), $post);
         $form->submit($request);
         if ($form->isValid()) {
             $this->getPostManager()->set($post);
+
+
+            $this->getPostManager()->getPommModel()->insertOne($post);
             dump($post);
             exit;
 
