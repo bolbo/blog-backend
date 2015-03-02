@@ -29,14 +29,6 @@ abstract class BaseManager
         $this->modelClass = $modelClass;
     }
 
-    /**
-     * @ return \PommProject\ModelManager\Model\Model
-     * @return \Bolbo\Component\Model\Database\PublicSchema\PostModel
-     */
-    public function getPommModel()
-    {
-        return $this->pomm['database']->getModel($this->modelClass);
-    }
 
     /**
      * @return Pomm

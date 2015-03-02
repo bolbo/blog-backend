@@ -4,6 +4,7 @@ namespace Bolbo\BlogBundle\Controller;
 
 use Bolbo\BlogBundle\Form\PostType;
 use Bolbo\Component\Model\Database\PublicSchema\Post;
+use Bolbo\Component\Model\Database\PublicSchema\PostModel;
 use Bolbo\BlogBundle\Model\PostCollection;
 
 use FOS\RestBundle\Util\Codes;
@@ -16,6 +17,7 @@ use FOS\RestBundle\View\RouteRedirectView;
 use FOS\RestBundle\View\View;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
+use PommProject\Foundation\Test\Unit\Pomm;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\FormTypeInterface;
@@ -25,7 +27,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  * Rest controller for posts
  *
  * @package Bolbo\BlogBundle\Controller
- * @author Bolbo
+ * @author  Bolbo
  */
 class PostController extends FOSRestController
 {
@@ -36,6 +38,7 @@ class PostController extends FOSRestController
     {
         return $this->get('bolbo.blog.post_manager');
     }
+
 
     /**
      * List all posts.
@@ -52,7 +55,7 @@ class PostController extends FOSRestController
      *
      * @Annotations\View()
      *
-     * @param Request $request the request object
+     * @param Request               $request      the request object
      * @param ParamFetcherInterface $paramFetcher param fetcher service
      *
      * @return array
@@ -83,7 +86,7 @@ class PostController extends FOSRestController
      * @Annotations\View(templateVar="post")
      *
      * @param Request $request the request object
-     * @param int $id the post id
+     * @param int     $id      the post id
      *
      * @return array
      *
@@ -105,6 +108,7 @@ class PostController extends FOSRestController
         return $view;
     }
 
+
     /**
      * Presents the form to use to create a new post.
      *
@@ -123,6 +127,7 @@ class PostController extends FOSRestController
     {
         return $this->createForm(new PostType());
     }
+
 
     /**
      * Creates a new post from the submitted data.
@@ -147,20 +152,25 @@ class PostController extends FOSRestController
      */
     public function postPostsAction(Request $request)
     {
-        $post = new Post();
-        $form = $this->createForm(new PostType(), $post);
+        /*$post = new PostModel();
+        $post->createEntity([]);
+        dump($post);exit;*/
 
+        $post = new Post();
+        dump($post);
+        $form = $this->createForm(new PostType(), $post);
         $form->submit($request);
         if ($form->isValid()) {
             $this->getPostManager()->set($post);
-
-            return $this->routeRedirectView('get_post', array('id' => $post->id));
+dump($post);exit;
+            return $this->routeRedirectView('get_post', array('id' => $post->getId()));
         }
 
         return array(
             'form' => $form
         );
     }
+
 
     /**
      * Presents the form to use to update an existing post.
@@ -176,7 +186,7 @@ class PostController extends FOSRestController
      * @Annotations\View()
      *
      * @param Request $request the request object
-     * @param int $id the post id
+     * @param int     $id      the post id
      *
      * @return FormTypeInterface
      *
@@ -193,6 +203,7 @@ class PostController extends FOSRestController
 
         return $form;
     }
+
 
     /**
      * Update existing post from the submitted data or create a new post at a specific location.
@@ -213,7 +224,7 @@ class PostController extends FOSRestController
      * )
      *
      * @param Request $request the request object
-     * @param int $id the post id
+     * @param int     $id      the post id
      *
      * @return FormTypeInterface|RouteRedirectView
      *
@@ -235,12 +246,15 @@ class PostController extends FOSRestController
         $form->submit($request);
         if ($form->isValid()) {
             $this->getPostManager()->set($post);
-
+dump($post->id);
+dump($post);
+            exit;
             return $this->routeRedirectView('get_post', array('id' => $post->id), $statusCode);
         }
 
         return $form;
     }
+
 
     /**
      * Removes a post.
@@ -253,7 +267,7 @@ class PostController extends FOSRestController
      * )
      *
      * @param Request $request the request object
-     * @param int $id the post id
+     * @param int     $id      the post id
      *
      * @return RouteRedirectView
      */
@@ -266,6 +280,7 @@ class PostController extends FOSRestController
         return $this->routeRedirectView('get_posts', array(), Codes::HTTP_NO_CONTENT);
     }
 
+
     /**
      * Removes a post.
      *
@@ -277,7 +292,7 @@ class PostController extends FOSRestController
      * )
      *
      * @param Request $request the request object
-     * @param int $id the post id
+     * @param int     $id      the post id
      *
      * @return RouteRedirectView
      */

@@ -1,0 +1,15 @@
+parameters:
+    db_host1:
+    db_port1:
+    db_name1:
+    db_user1:
+    db_password1:
+
+    mailer_transport: smtp
+    mailer_host:
+    mailer_user:
+    mailer_password:
+    mailer_port:
+
+    locale: fr
+    secret: secret

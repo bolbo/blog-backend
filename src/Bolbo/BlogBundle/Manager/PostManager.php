@@ -8,6 +8,7 @@ use Bolbo\Component\Manager\BaseManager;
 
 /**
  * Class PostManager
+ *
  * @package Bolbo\BlogBundle\Manager
  */
 class PostManager extends BaseManager
@@ -19,15 +20,25 @@ class PostManager extends BaseManager
         parent::__construct($pomm, $modelClass);
     }
 
+
+    /**
+     * @ return \PommProject\ModelManager\Model\Model
+     *
+     * @return \Bolbo\Component\Model\Database\PublicSchema\PostModel
+     */
+    public function getPommModel()
+    {
+        return $this->pomm['database']->getModel($this->modelClass);
+    }
+
+
     /**
      * @param \Bolbo\Component\Model\Database\PublicSchema\Post $data
+     *
      * @return mixed
      */
     public function set($data)
     {
-
-        //dump(array_keys($data->fields()));
-        //exit;
         return $this->getPommModel()->updateOne($data, array_keys($data->fields()));
     }
 }
