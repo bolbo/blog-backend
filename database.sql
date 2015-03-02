@@ -6,7 +6,7 @@ CREATE TABLE category (
 );
 
 CREATE TABLE post (
-  id               SERIAL PRIMARY KEY,
+  id                serial primary key,
   author_id        INTEGER                                                     NOT NULL,
   category_id      INTEGER REFERENCES category                                 NOT NULL,
   title            CHARACTER VARYING                                           NOT NULL,

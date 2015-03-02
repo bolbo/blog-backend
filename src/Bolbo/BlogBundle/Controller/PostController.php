@@ -142,7 +142,7 @@ class PostController extends FOSRestController
      * )
      *
      * @Annotations\View(
-     *   template = "AcmeDemoBundle:Post:newPost.html.twig",
+     *   template = "BolboBlogBundle:Post:newPost.html.twig",
      *   statusCode = Codes::HTTP_BAD_REQUEST
      * )
      *
@@ -152,22 +152,17 @@ class PostController extends FOSRestController
      */
     public function postPostsAction(Request $request)
     {
-        $post = new Post(['id'          => null,
-                          'title'       => null,
-                          'content'     => null,
-                          'category_id' => 1,
-                          'slug'        => 'test',
-                          'author_id'   => 1]);
+        $post = new Post(
+            ['title'       => null,
+             'content'     => null,
+             'category_id' => 1,
+             'slug'        => 'test4',
+             'author_id'   => 1]);
 
         $form = $this->createForm(new PostType(), $post);
         $form->submit($request);
         if ($form->isValid()) {
-            $this->getPostManager()->set($post);
-
-
             $this->getPostManager()->getPommModel()->insertOne($post);
-            dump($post);
-            exit;
 
             return $this->routeRedirectView('get_post', array('id' => $post->getId()));
         }
@@ -225,7 +220,7 @@ class PostController extends FOSRestController
      * )
      *
      * @Annotations\View(
-     *   template="AcmeDemoBundle:Post:editPost.html.twig",
+     *   template="BolboBlogBundle:Post:editPost.html.twig",
      *   templateVar="form"
      * )
      *
