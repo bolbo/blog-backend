@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
             new Hautelook\TemplatedUriBundle\HautelookTemplatedUriBundle(),
             new Bazinga\Bundle\RestExtraBundle\BazingaRestExtraBundle(),
+            new Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle(),
 
             new \PommProject\PommBundle\PommBundle(),
             new Bolbo\BlogBundle\BolboBlogBundle(),

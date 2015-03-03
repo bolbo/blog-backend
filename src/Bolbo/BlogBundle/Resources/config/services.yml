@@ -8,3 +8,4 @@ services:
             - @pomm
             - %database_connexion%
             - \Bolbo\Component\Model\Database\PublicSchema\PostModel
+            - @cocur_slugify

@@ -153,18 +153,24 @@ class PostController extends FOSRestController
     public function postPostsAction(Request $request)
     {
         $post = new Post(
-            ['title'       => null,
-             'content'     => null,
-             'category_id' => 1,
-             'slug'        => 'test4',
-             'author_id'   => 1]);
+            ['title'            => null,
+             'content'          => null,
+             'category_id'      => 1,
+             'slug'             => null,
+             'author_id'        => 1,
+             'meta_title'       => null,
+             'meta_description' => null,
+             'meta_keyword'     => null,
+             'tag'              => null,
+            ]);
 
         $form = $this->createForm(new PostType(), $post);
         $form->submit($request);
         if ($form->isValid()) {
-            $this->getPostManager()->getPommModel()->insertOne($post);
+            //$this->getPostManager()->getPommModel()->insertOne($post);
+            $result = $this->getPostManager()->save($post);
 
-            return $this->routeRedirectView('get_post', array('id' => $post->getId()));
+            return $this->routeRedirectView('get_post', array('id' => $result->getId()));
         }
 
         return array(
@@ -246,9 +252,8 @@ class PostController extends FOSRestController
 
         $form->submit($request);
         if ($form->isValid()) {
-            $this->getPostManager()->set($post);
-            dump($post->id);
-            dump($post);
+            $result = $this->getPostManager()->save($post);
+            dump($result);
             exit;
 
             return $this->routeRedirectView('get_post', array('id' => $post->id), $statusCode);

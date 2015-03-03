@@ -19,15 +19,22 @@ class PostManager extends BaseManager
      */
     var $databaseConnexion;
 
+    /**
+     * @var \Cocur\Slugify\Slugify
+     */
+    var $slugify;
+
 
     /**
      * @param \PommProject\Foundation\Pomm $pomm
      * @param string                       $databaseConnexion
      * @param string                       $modelClass
+     * @param \Cocur\Slugify\Slugify       $slugify
      */
-    public function __construct($pomm, $databaseConnexion, $modelClass)
+    public function __construct($pomm, $databaseConnexion, $modelClass, $slugify)
     {
         $this->databaseConnexion = $databaseConnexion;
+        $this->slugify = $slugify;
         parent::__construct($pomm, $modelClass);
     }
 
@@ -44,10 +51,21 @@ class PostManager extends BaseManager
     /**
      * @param \Bolbo\Component\Model\Database\PublicSchema\Post $data
      *
-     * @return mixed
+     * @return \Bolbo\Component\Model\Database\PublicSchema\Post
      */
-    public function set($data)
+    public function save($data)
     {
-        return $this->getPommModel()->updateOne($data, array_keys($data->fields()));
+        if (!$data->has('id')) {
+            // Create new object -> generate slug
+            // @todo lbolzer generate unique slug
+            $slug = $this->slugify->slugify($data->title);
+            $data->slug = $slug;
+            $this->getPommModel()->insertOne($data);
+        } else {
+            // Update obect
+            $this->getPommModel()->updateOne($data, array_keys($data->fields()));
+        }
+
+        return $data;
     }
 }
