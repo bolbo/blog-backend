@@ -52,6 +52,8 @@ class PostController extends FOSRestController
      *
      * @Annotations\QueryParam(name="offset", requirements="\d+", nullable=true, description="Offset from which to start listing posts.")
      * @Annotations\QueryParam(name="limit", requirements="\d+", default="5", description="How many posts to return.")
+     * @Annotations\QueryParam(name="filter", default="", description="Filters.")
+     * @Annotations\QueryParam(name="sort", default="", description="Sort.")
      *
      * @Annotations\View()
      *
@@ -62,11 +64,15 @@ class PostController extends FOSRestController
      */
     public function getPostsAction(Request $request, ParamFetcherInterface $paramFetcher)
     {
+        //dump($paramFetcher);exit;
+
         $offset = $paramFetcher->get('offset');
         $start = null == $offset ? 0 : $offset + 1;
         $limit = $paramFetcher->get('limit');
+        $filter = json_decode($paramFetcher->get('filter'));
+        $sort = json_decode($paramFetcher->get('sort'));
 
-        $posts = $this->getPostManager()->fetch($start, $limit);
+        $posts = $this->getPostManager()->fetch($start, $limit, $filter, $sort);
 
         return new PostCollection($posts, $offset, $limit);
     }

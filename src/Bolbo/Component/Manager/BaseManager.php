@@ -69,20 +69,6 @@ abstract class BaseManager
         $this->modelClass = $modelClass;
     }
 
-
-    /**
-     * @param $start
-     * @param $limit
-     *
-     * @return mixed
-     */
-    public function fetch($start, $limit)
-    {
-        return $this->getPommModel()
-                    ->findAll();
-    }
-
-
     /**
      * @param $id
      *
