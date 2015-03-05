@@ -84,10 +84,10 @@ class PostManager extends BaseManager
         $where = Where::create();
 
         if (isset($filter->date->from) && !is_null($filter->date->from)) {
-            $where = Where::create('created_at >= $*::timestamptz', [new \DateTime($filter->date->from)]);
+            $where->andWhere('created_at >= $*::timestamptz', [new \DateTime($filter->date->from)]);
         }
         if (isset($filter->date->to) && !is_null($filter->date->to)) {
-            $where = Where::create('created_at < $*::timestamptz', [new \DateTime($filter->date->to)]);
+            $where->andWhere('created_at < $*::timestamptz', [new \DateTime($filter->date->to)]);
         }
         if (isset($filter->author_id) && !is_null($filter->author_id)) {
             $where->andWhere('author_id = ANY($*::int4[])', [$filter->author_id]);
@@ -99,6 +99,7 @@ class PostManager extends BaseManager
 
         //$where->andWhere('tag = $*::json', [json_encode($filter->tag)]);
 
+        // @todo bolbo sanitize order
         $suffix = '';
         if (!is_null($sort)) {
             $suffix .= ' ORDER BY ';
