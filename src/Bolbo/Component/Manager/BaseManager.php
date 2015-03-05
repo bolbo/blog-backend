@@ -69,17 +69,6 @@ abstract class BaseManager
         $this->modelClass = $modelClass;
     }
 
-    /**
-     * @param $id
-     *
-     * @return mixed
-     */
-    public function get($id)
-    {
-        return $this->getPommModel()
-                    ->findByPk(['id' => $id]);
-    }
-
 
     /**
      * @param $id

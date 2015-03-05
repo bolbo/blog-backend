@@ -97,8 +97,6 @@ class PostManager extends BaseManager
             $where->andWhere('category_id = ANY($*::int4[])', [$filter->category_id]);
         }
 
-        //$where->andWhere('tag = $*::json', [json_encode($filter->tag)]);
-
         // @todo bolbo sanitize order
         $suffix = '';
         if (!is_null($sort)) {
@@ -113,4 +111,18 @@ class PostManager extends BaseManager
                     ->findWhere($where, [], $suffix);
     }
 
+
+    /**
+     * @param $id
+     *
+     * @return mixed
+     */
+    public function get($id)
+    {
+        return $this->getPommModel()
+                    ->findWithSoftCountWhere(new Where('p.id = ANY($*::int4[])', [$id]))
+                    //->findWithSoftCountId($id)
+                    ->current()
+            ;
+    }
 }

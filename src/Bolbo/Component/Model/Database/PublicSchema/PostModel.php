@@ -22,6 +22,7 @@ class PostModel extends Model
 {
     use WriteQueries;
 
+
     /**
      * __construct()
      *
@@ -34,5 +35,78 @@ class PostModel extends Model
     {
         $this->structure = new PostStructure;
         $this->flexible_entity_class = "\Bolbo\Component\Model\Database\PublicSchema\Post";
+    }
+
+
+    public function findWithSoftCountId($id)
+    {
+        // 1.define SQL query using placeholders
+        $sql = <<<SQL
+select
+    :projection
+from
+    :post_table p
+        left join :attachment_table a on p.id = a.post_id
+where p.id = :post_id
+group by p.id
+SQL;
+        // 2.define the projection
+        $projection = $this
+            ->createProjection()
+            ->setField('attachment_count', 'count(a.*)', 'int4');
+
+        // 3.replace placeholders
+        $sql = strtr($sql,
+            [
+                ':projection'       => $projection->formatFieldsWithFieldAlias('p'),
+                ':post_table'       => $this->getStructure()->getRelation(),
+                ':attachment_table' => $this
+                    ->getSession()
+                    ->getModel('\Bolbo\Component\Model\Database\PublicSchema\CommentModel')
+                    ->getStructure()
+                    ->getRelation(),
+                //':condition'        => $where
+                ':post_id'          => $id
+            ]
+        );
+
+        // 4.issue the query
+        return $this->query($sql, [], $projection);
+    }
+
+
+    public function findWithSoftCountWhere(Where $where)
+    {
+        // 1.define SQL query using placeholders
+        $sql = <<<SQL
+select
+    :projection
+from
+    :post_table p
+        left join :attachment_table a on p.id = a.post_id
+where :condition
+group by p.id
+SQL;
+        // 2.define the projection
+        $projection = $this
+            ->createProjection()
+            ->setField('attachment_count', 'count(a.*)', 'int4');
+
+        // 3.replace placeholders
+        $sql = strtr($sql,
+            [
+                ':projection'       => $projection->formatFieldsWithFieldAlias('p'),
+                ':post_table'       => $this->getStructure()->getRelation(),
+                ':attachment_table' => $this
+                    ->getSession()
+                    ->getModel('\Bolbo\Component\Model\Database\PublicSchema\CommentModel')
+                    ->getStructure()
+                    ->getRelation(),
+                ':condition'        => $where
+            ]
+        );
+
+        // 4.issue the query
+        return $this->query($sql, [$where->getValues()], $projection);
     }
 }

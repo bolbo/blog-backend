@@ -7,7 +7,7 @@
 {% block content %}
     <h1 class="title">Note #{{ id }}</h1>
 
-    <p>{{ post }}</p>
+    <p>{{ dump(post) }}</p>
     <p>
         <a href="{{ path('get_posts') }}">{{ 'post.list.link'|trans({}, 'BolboBlogBundle') }}</a> <br>
         {#

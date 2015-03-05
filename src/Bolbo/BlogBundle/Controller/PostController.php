@@ -64,8 +64,6 @@ class PostController extends FOSRestController
      */
     public function getPostsAction(Request $request, ParamFetcherInterface $paramFetcher)
     {
-        //dump($paramFetcher);exit;
-
         $offset = $paramFetcher->get('offset');
         $start = null == $offset ? 0 : $offset + 1;
         $limit = $paramFetcher->get('limit');
@@ -101,6 +99,7 @@ class PostController extends FOSRestController
     public function getPostAction(Request $request, $id)
     {
         $post = $this->getPostManager()->get($id);
+        //dump($post);exit;
         if (false === $post) {
             throw $this->createNotFoundException("Post does not exist.");
         }
