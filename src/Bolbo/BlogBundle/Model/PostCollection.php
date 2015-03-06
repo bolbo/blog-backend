@@ -2,8 +2,11 @@
 
 namespace Bolbo\BlogBundle\Model;
 
+use Bolbo\Component\Model\Database\PublicSchema\Post;
+
 class PostCollection
 {
+
     /**
      * @var Post[]
      */
@@ -19,8 +22,9 @@ class PostCollection
      */
     public $limit;
 
+
     /**
-     * @param Post[] $posts
+     * @param Post[]  $posts
      * @param integer $offset
      * @param integer $limit
      */

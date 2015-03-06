@@ -1264,12 +1264,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "646ca5302b10a69be0c2278463217e1774492eff"
+                "reference": "589f1878e785a33f537a2db606a23f09f822d5c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/646ca5302b10a69be0c2278463217e1774492eff",
-                "reference": "646ca5302b10a69be0c2278463217e1774492eff",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/589f1878e785a33f537a2db606a23f09f822d5c7",
+                "reference": "589f1878e785a33f537a2db606a23f09f822d5c7",
                 "shasum": ""
             },
             "require": {
@@ -1314,20 +1314,20 @@
                 "rest",
                 "web service"
             ],
-            "time": "2015-02-08 23:01:30"
+            "time": "2015-03-05 17:58:10"
         },
         {
             "name": "guzzlehttp/ringphp",
-            "version": "1.0.5",
+            "version": "1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/RingPHP.git",
-                "reference": "a903f51b692427318bc813217c0e6505287e79a4"
+                "reference": "f43ab34aad69ca0ba04172cf2c3cd5c12fc0e5a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/RingPHP/zipball/a903f51b692427318bc813217c0e6505287e79a4",
-                "reference": "a903f51b692427318bc813217c0e6505287e79a4",
+                "url": "https://api.github.com/repos/guzzle/RingPHP/zipball/f43ab34aad69ca0ba04172cf2c3cd5c12fc0e5a4",
+                "reference": "f43ab34aad69ca0ba04172cf2c3cd5c12fc0e5a4",
                 "shasum": ""
             },
             "require": {
@@ -1364,7 +1364,8 @@
                     "homepage": "https://github.com/mtdowling"
                 }
             ],
-            "time": "2014-12-11 05:50:32"
+            "description": "Provides a simple API and specification that abstracts away the details of HTTP into a single PHP function.",
+            "time": "2015-02-26 20:43:09"
         },
         {
             "name": "guzzlehttp/streams",
@@ -1472,28 +1473,21 @@
         },
         {
             "name": "hautelook/templated-uri-router",
-            "version": "2.0.0",
-            "target-dir": "Hautelook/TemplatedUriRouter",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hautelook/TemplatedUriRouter.git",
-                "reference": "745a960db5f38aab919dd5d0e6e805369f6c9c5e"
+                "reference": "4eae819c9a6b8cc3e9bb6959de40e9fe6203e3ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hautelook/TemplatedUriRouter/zipball/745a960db5f38aab919dd5d0e6e805369f6c9c5e",
-                "reference": "745a960db5f38aab919dd5d0e6e805369f6c9c5e",
+                "url": "https://api.github.com/repos/hautelook/TemplatedUriRouter/zipball/4eae819c9a6b8cc3e9bb6959de40e9fe6203e3ed",
+                "reference": "4eae819c9a6b8cc3e9bb6959de40e9fe6203e3ed",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
                 "symfony/routing": "~2.5"
-            },
-            "conflict": {
-                "symfony/routing": "2.4.1"
-            },
-            "require-dev": {
-                "symfony/framework-bundle": "~2.1"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -1502,8 +1496,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Hautelook\\TemplatedUriRouter": ""
+                "psr-4": {
+                    "Hautelook\\TemplatedUriRouter\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1528,7 +1522,7 @@
                 "url",
                 "xml"
             ],
-            "time": "2014-07-28 03:37:14"
+            "time": "2015-02-27 14:07:45"
         },
         {
             "name": "jdorn/sql-formatter",
@@ -1878,16 +1872,16 @@
         },
         {
             "name": "michelf/php-markdown",
-            "version": "1.4.1",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/michelf/php-markdown.git",
-                "reference": "de9a19c7bf352d41cc99ed86c3c0ef17e87394b6"
+                "reference": "e1aabe18173231ebcefc90e615565742fc1c7fd9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/de9a19c7bf352d41cc99ed86c3c0ef17e87394b6",
-                "reference": "de9a19c7bf352d41cc99ed86c3c0ef17e87394b6",
+                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/e1aabe18173231ebcefc90e615565742fc1c7fd9",
+                "reference": "e1aabe18173231ebcefc90e615565742fc1c7fd9",
                 "shasum": ""
             },
             "require": {
@@ -1910,35 +1904,35 @@
             ],
             "authors": [
                 {
-                    "name": "Michel Fortin",
-                    "email": "michel.fortin@michelf.ca",
-                    "homepage": "http://michelf.ca/",
-                    "role": "Developer"
-                },
-                {
                     "name": "John Gruber",
                     "homepage": "http://daringfireball.net/"
+                },
+                {
+                    "name": "Michel Fortin",
+                    "email": "michel.fortin@michelf.ca",
+                    "homepage": "https://michelf.ca/",
+                    "role": "Developer"
                 }
             ],
             "description": "PHP Markdown",
-            "homepage": "http://michelf.ca/projects/php-markdown/",
+            "homepage": "https://michelf.ca/projects/php-markdown/",
             "keywords": [
                 "markdown"
             ],
-            "time": "2014-05-05 02:43:50"
+            "time": "2015-03-01 12:03:08"
         },
         {
             "name": "monolog/monolog",
-            "version": "1.12.0",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "1fbe8c2641f2b163addf49cc5e18f144bec6b19f"
+                "reference": "c41c218e239b50446fd883acb1ecfd4b770caeae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/1fbe8c2641f2b163addf49cc5e18f144bec6b19f",
-                "reference": "1fbe8c2641f2b163addf49cc5e18f144bec6b19f",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/c41c218e239b50446fd883acb1ecfd4b770caeae",
+                "reference": "c41c218e239b50446fd883acb1ecfd4b770caeae",
                 "shasum": ""
             },
             "require": {
@@ -1955,6 +1949,7 @@
                 "phpunit/phpunit": "~4.0",
                 "raven/raven": "~0.5",
                 "ruflin/elastica": "0.90.*",
+                "swiftmailer/swiftmailer": "~5.3",
                 "videlalvaro/php-amqplib": "~2.4"
             },
             "suggest": {
@@ -1971,7 +1966,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.12.x-dev"
+                    "dev-master": "1.13.x-dev"
                 }
             },
             "autoload": {
@@ -1997,21 +1992,21 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2014-12-29 21:29:35"
+            "time": "2015-03-05 01:12:12"
         },
         {
             "name": "nelmio/api-doc-bundle",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "target-dir": "Nelmio/ApiDocBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nelmio/NelmioApiDocBundle.git",
-                "reference": "3fdb2d4a819d1f71bff0c45880af705a8b124955"
+                "reference": "f23351b1321942c4264efb604653d475cff7201f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nelmio/NelmioApiDocBundle/zipball/3fdb2d4a819d1f71bff0c45880af705a8b124955",
-                "reference": "3fdb2d4a819d1f71bff0c45880af705a8b124955",
+                "url": "https://api.github.com/repos/nelmio/NelmioApiDocBundle/zipball/f23351b1321942c4264efb604653d475cff7201f",
+                "reference": "f23351b1321942c4264efb604653d475cff7201f",
                 "shasum": ""
             },
             "require": {
@@ -2027,7 +2022,7 @@
             "require-dev": {
                 "friendsofsymfony/rest-bundle": "~1.0",
                 "jms/serializer-bundle": ">=0.11",
-                "sensio/framework-extra-bundle": "~2.1",
+                "sensio/framework-extra-bundle": "~3.0",
                 "symfony/browser-kit": "~2.1",
                 "symfony/css-selector": "~2.1",
                 "symfony/form": "~2.1",
@@ -2043,7 +2038,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.7.x-dev"
+                    "dev-master": "2.8.x-dev"
                 }
             },
             "autoload": {
@@ -2072,7 +2067,7 @@
                 "documentation",
                 "rest"
             ],
-            "time": "2014-07-30 09:11:08"
+            "time": "2015-03-06 10:47:58"
         },
         {
             "name": "phpcollection/phpcollection",
@@ -2179,12 +2174,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/Cli.git",
-                "reference": "f1cc921110b0246ec6a1eeddabba71a8b6686594"
+                "reference": "ca5d4b9aed9c0ed205be841c4da890f86ac6648d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/Cli/zipball/f1cc921110b0246ec6a1eeddabba71a8b6686594",
-                "reference": "f1cc921110b0246ec6a1eeddabba71a8b6686594",
+                "url": "https://api.github.com/repos/pomm-project/Cli/zipball/ca5d4b9aed9c0ed205be841c4da890f86ac6648d",
+                "reference": "ca5d4b9aed9c0ed205be841c4da890f86ac6648d",
                 "shasum": ""
             },
             "require": {
@@ -2231,7 +2226,7 @@
                 "pomm",
                 "postgresql"
             ],
-            "time": "2015-02-08 16:53:21"
+            "time": "2015-03-06 08:22:04"
         },
         {
             "name": "pomm-project/foundation",
@@ -2239,12 +2234,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/Foundation.git",
-                "reference": "4255809d0ab5e4732d24e322e080c61e9d3fd369"
+                "reference": "0491314d52322c484c94bee2af6ecf6fbd056eb6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/4255809d0ab5e4732d24e322e080c61e9d3fd369",
-                "reference": "4255809d0ab5e4732d24e322e080c61e9d3fd369",
+                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/0491314d52322c484c94bee2af6ecf6fbd056eb6",
+                "reference": "0491314d52322c484c94bee2af6ecf6fbd056eb6",
                 "shasum": ""
             },
             "require": {
@@ -2285,7 +2280,7 @@
                 "pomm",
                 "postgresql"
             ],
-            "time": "2015-02-24 17:42:58"
+            "time": "2015-03-05 09:41:37"
         },
         {
             "name": "pomm-project/model-manager",
@@ -2293,12 +2288,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/ModelManager.git",
-                "reference": "320e3caa4a726167b6e834b8de7f9c5cb67044c2"
+                "reference": "d23466aad1b32943587b5bdf687ef6d5c80b8cdd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/ModelManager/zipball/320e3caa4a726167b6e834b8de7f9c5cb67044c2",
-                "reference": "320e3caa4a726167b6e834b8de7f9c5cb67044c2",
+                "url": "https://api.github.com/repos/pomm-project/ModelManager/zipball/d23466aad1b32943587b5bdf687ef6d5c80b8cdd",
+                "reference": "d23466aad1b32943587b5bdf687ef6d5c80b8cdd",
                 "shasum": ""
             },
             "require": {
@@ -2343,7 +2338,7 @@
                 "pomm",
                 "postgresql"
             ],
-            "time": "2015-02-23 12:32:23"
+            "time": "2015-03-06 13:42:17"
         },
         {
             "name": "pomm-project/pomm-bundle",
@@ -2416,12 +2411,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/pomm-symfony-bridge.git",
-                "reference": "ca32a31c3790362410a5195583cfc7147e1f261c"
+                "reference": "6a4abeac65f9e6c08d37e8135727315e3c00eca5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/pomm-symfony-bridge/zipball/ca32a31c3790362410a5195583cfc7147e1f261c",
-                "reference": "ca32a31c3790362410a5195583cfc7147e1f261c",
+                "url": "https://api.github.com/repos/pomm-project/pomm-symfony-bridge/zipball/6a4abeac65f9e6c08d37e8135727315e3c00eca5",
+                "reference": "6a4abeac65f9e6c08d37e8135727315e3c00eca5",
                 "shasum": ""
             },
             "require": {
@@ -2469,7 +2464,7 @@
                 "silex",
                 "symfony"
             ],
-            "time": "2015-02-06 13:41:15"
+            "time": "2015-03-06 17:15:39"
         },
         {
             "name": "psr/log",
@@ -2555,17 +2550,17 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v2.3.9",
+            "version": "v2.3.11",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "ac4893621b30faf8f970758afea7640122767817"
+                "reference": "374bbea795fa69a85b1623048798a89aebffe62b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/ac4893621b30faf8f970758afea7640122767817",
-                "reference": "ac4893621b30faf8f970758afea7640122767817",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/374bbea795fa69a85b1623048798a89aebffe62b",
+                "reference": "374bbea795fa69a85b1623048798a89aebffe62b",
                 "shasum": ""
             },
             "require": {
@@ -2597,7 +2592,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2015-02-01 05:39:51"
+            "time": "2015-02-27 12:58:18"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -2980,12 +2975,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "9f5a2caf3a7b35a24bc691013fa76e1581a7fdc2"
+                "reference": "76df0455c3504edabea9dc3ffad4b854daa2e76f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/9f5a2caf3a7b35a24bc691013fa76e1581a7fdc2",
-                "reference": "9f5a2caf3a7b35a24bc691013fa76e1581a7fdc2",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/76df0455c3504edabea9dc3ffad4b854daa2e76f",
+                "reference": "76df0455c3504edabea9dc3ffad4b854daa2e76f",
                 "shasum": ""
             },
             "require": {
@@ -3089,7 +3084,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-02-24 19:07:32"
+            "time": "2015-03-06 16:47:51"
         },
         {
             "name": "twig/extensions",
@@ -3197,16 +3192,16 @@
         },
         {
             "name": "willdurand/hateoas",
-            "version": "v2.3.0",
+            "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/willdurand/Hateoas.git",
-                "reference": "af959579e410bb9f7179a98bf5ee5863259109cb"
+                "reference": "89fe19ad9ce25f15323d76ac22272282ae8a9f14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/willdurand/Hateoas/zipball/af959579e410bb9f7179a98bf5ee5863259109cb",
-                "reference": "af959579e410bb9f7179a98bf5ee5863259109cb",
+                "url": "https://api.github.com/repos/willdurand/Hateoas/zipball/89fe19ad9ce25f15323d76ac22272282ae8a9f14",
+                "reference": "89fe19ad9ce25f15323d76ac22272282ae8a9f14",
                 "shasum": ""
             },
             "require": {
@@ -3234,7 +3229,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.3-dev"
+                    "dev-master": "2.4-dev"
                 }
             },
             "autoload": {
@@ -3248,17 +3243,16 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
-                    "email": "william.durand1@gmail.com",
-                    "homepage": "http://www.willdurand.fr"
-                },
-                {
                     "name": "Adrien Brault",
                     "email": "adrien.brault@gmail.com"
+                },
+                {
+                    "name": "William Durand",
+                    "email": "william.durand1@gmail.com"
                 }
             ],
             "description": "A PHP library to support implementing representations for HATEOAS REST web services",
-            "time": "2014-06-03 07:59:14"
+            "time": "2015-02-24 15:28:33"
         },
         {
             "name": "willdurand/hateoas-bundle",

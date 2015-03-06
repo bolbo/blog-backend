@@ -63,8 +63,14 @@ class PostManager extends BaseManager
             $data->slug = $slug;
             $this->getPommModel()->insertOne($data);
         } else {
-            // Update obect
-            $this->getPommModel()->updateOne($data, array_keys($data->fields()));
+            // Update object
+            $fields = $data->fields();
+            if (array_key_exists('attachment_count', $fields)) {
+                unset($fields['attachment_count']);
+            }
+            $fieldList = array_keys($fields);
+
+            $this->getPommModel()->updateOne($data, $fieldList);
         }
 
         return $data;
@@ -121,8 +127,7 @@ class PostManager extends BaseManager
     {
         return $this->getPommModel()
                     ->findWithSoftCountWhere(new Where('p.id = ANY($*::int4[])', [$id]))
-                    //->findWithSoftCountId($id)
-                    ->current()
-            ;
+            //->findWithSoftCountId($id)
+                    ->current();
     }
 }

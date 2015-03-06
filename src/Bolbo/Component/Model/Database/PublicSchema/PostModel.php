@@ -38,6 +38,11 @@ class PostModel extends Model
     }
 
 
+    /**
+     * @param $id
+     *
+     * @return mixed
+     */
     public function findWithSoftCountId($id)
     {
         // 1.define SQL query using placeholders
@@ -75,6 +80,11 @@ SQL;
     }
 
 
+    /**
+     * @param Where $where
+     *
+     * @return mixed
+     */
     public function findWithSoftCountWhere(Where $where)
     {
         // 1.define SQL query using placeholders

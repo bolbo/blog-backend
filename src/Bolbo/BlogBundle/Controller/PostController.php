@@ -99,7 +99,6 @@ class PostController extends FOSRestController
     public function getPostAction(Request $request, $id)
     {
         $post = $this->getPostManager()->get($id);
-        //dump($post);exit;
         if (false === $post) {
             throw $this->createNotFoundException("Post does not exist.");
         }
@@ -172,7 +171,6 @@ class PostController extends FOSRestController
         $form = $this->createForm(new PostType(), $post);
         $form->submit($request);
         if ($form->isValid()) {
-            //$this->getPostManager()->getPommModel()->insertOne($post);
             $result = $this->getPostManager()->save($post);
 
             return $this->routeRedirectView('get_post', array('id' => $result->getId()));
@@ -245,6 +243,7 @@ class PostController extends FOSRestController
     public function putPostsAction(Request $request, $id)
     {
         $post = $this->getPostManager()->get($id);
+
         if (false === $post) {
             $post = new Post();
             $post->id = $id;
@@ -252,14 +251,11 @@ class PostController extends FOSRestController
         } else {
             $statusCode = Codes::HTTP_NO_CONTENT;
         }
-
         $form = $this->createForm(new PostType(), $post);
 
         $form->submit($request);
         if ($form->isValid()) {
-            $result = $this->getPostManager()->save($post);
-            dump($result);
-            exit;
+            $this->getPostManager()->save($post);
 
             return $this->routeRedirectView('get_post', array('id' => $post->id), $statusCode);
         }
