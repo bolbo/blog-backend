@@ -13,7 +13,7 @@ use PommProject\ModelManager\Model\RowStructure;
  * Post
  *
  * Structure class for relation public.post.
- * 
+ *
  * Class and fields comments are inspected from table and fields comments.
  * Just add comments in your database and they will appear here.
  * @see http://www.postgresql.org/docs/9.0/static/sql-comment.html
@@ -48,7 +48,7 @@ class Post extends RowStructure
             ->addField('meta_title', 'varchar')
             ->addField('meta_description', 'varchar')
             ->addField('meta_keyword', 'varchar')
-            ->addField('tag', 'json')
+            ->addField('tag', 'public.ltree')
             ->addField('published', 'bool')
             ->addField('slug', 'varchar')
             ;

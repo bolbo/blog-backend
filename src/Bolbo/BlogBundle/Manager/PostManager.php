@@ -56,6 +56,13 @@ class PostManager extends BaseManager
      */
     public function save($data)
     {
+        // Create array from tag list
+        $tagList = explode(',', $data->tag);
+        foreach ($tagList as $key => $tag) {
+            $tagList[$key] = trim($tag);
+        }
+        $data->tag = $tagList;
+
         if (!$data->has('id')) {
             // Create new object -> generate slug
             // @todo lbolzer generate unique slug
