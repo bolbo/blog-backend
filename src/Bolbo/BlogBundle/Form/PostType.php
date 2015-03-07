@@ -5,6 +5,8 @@ namespace Bolbo\BlogBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * Class PostType
@@ -25,6 +27,10 @@ class PostType extends AbstractType
             [
                 'required'    => true,
                 'description' => 'post title',
+                'constraints' => [
+                    new NotBlank(),
+                    new Length(['min' => 5, 'max' => 200]),
+                ],
             ]
         );
         $builder->add('content',
@@ -32,6 +38,10 @@ class PostType extends AbstractType
             [
                 'required'    => true,
                 'description' => 'post content',
+                'constraints' => [
+                    new NotBlank(),
+                    new Length(['min' => 5]),
+                ],
             ]
         );
 

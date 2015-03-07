@@ -12,6 +12,7 @@
         {% for id, post in data.posts %}
             <li>
                 <a href="{{ path('get_post', {'id': post.id}) }}">{{ post }}</a>
+                [ XX comments ]
                 [<a href="{{ path('edit_posts', {'id': post.id}) }}">{{ 'post.edit.link'|trans({}, 'BolboBlobBundle') }}</a>]
                 [<a href="{{ path('remove_posts', {'id': post.id}) }}">{{ 'post.remove.link'|trans({}, 'BolboBlobBundle') }}</a>]
 
