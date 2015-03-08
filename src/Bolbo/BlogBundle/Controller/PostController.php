@@ -72,6 +72,11 @@ class PostController extends FOSRestController
 
         $posts = $this->getPostManager()->fetch($start, $limit, $filter, $sort);
 
+        if ('json' == $request->get('_format')) {
+            // fix for json export
+            $posts = $posts->extract();
+        }
+
         return new PostCollection($posts, $offset, $limit);
     }
 

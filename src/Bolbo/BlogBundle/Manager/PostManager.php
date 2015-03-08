@@ -110,6 +110,21 @@ class PostManager extends BaseManager
             $where->andWhere('category_id = ANY($*::int4[])', [$filter->category_id]);
         }
 
+        if (isset($filter->tag) && is_array($filter->tag) && count($filter->tag) != 0) {
+            $strWhere = '';
+            $arrWhere = [];
+            foreach ($filter->tag as $tag) {
+                $strWhere .= " tag ~ '*." . $tag . ".*' or ";
+                //$strWhere .= " tag ~ '*.$*::int4.*' || ";
+                $arrWhere[] = $tag;
+            }
+            $strWhere = substr($strWhere, 0, -3);
+            if ($strWhere != '') {
+                //$where->andWhere('(' . $strWhere . ')', [$arrWhere]);
+                $where->andWhere('(' . $strWhere . ')', []);
+            }
+        }
+
         // @todo bolbo sanitize order
         $suffix = '';
         if (!is_null($sort)) {
